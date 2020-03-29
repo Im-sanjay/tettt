@@ -1,0 +1,144 @@
+
+{% extends "header.html" %}
+{% block content %}
+
+<div class="content-boxes">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+         <!-- first box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                  {% for i in Confirmed %}
+                  <h3>{{ i[0] }} </h3>
+                  {% endfor %}
+
+                  <p>Confirmed</p>
+                </div>
+                    <div class="icon">
+                      <i class="ion ion-bag"></i>
+                    </div>
+                <a href="{{ url_for('confirm') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+      </div>
+
+
+       <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><sup style="font-size: 20px"></sup></h3>
+
+              <p>Recovered</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="{{ url_for('recover') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+            <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>6,456</h3>
+
+              <p>Deaths </p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="{{ url_for('deaths') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+
+         <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>144 { data }</h3>
+
+              <p>Countries</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        </div>
+    </div>
+
+
+
+<section class="content">
+
+    <div class="box">
+
+
+      <div class="box-body ">
+
+
+        <table class="table table-bordered table-striped  " width="100px">
+       
+          <thead>
+           
+           <tr>
+               {% for col in column_names %}
+             <!-- <th style="width:10px">#</th> -->
+             <th >{{col}}</th>
+             {% endfor %}
+             
+         
+           </tr> 
+
+          </thead>
+  <tbody>
+    {% for row in row_data %}
+    <tr>
+        {% for col, row_ in zip(column_names, row) %}
+        {% if col == link_column %}
+        <td class=" bg-aqua" >{{ row_ }}</td>
+        {% else %}
+        <td class="small-box col-lg-3 col-xs-6 bg-aqua">{{row_}}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+
+    {% endfor %}
+</tbody>
+
+        </table>
+
+
+
+      </div>
+    
+    </div>
+
+  </section>
+
+    
+          <!-- div class="small-box bg-green">
+            {% for row in row_data%} -->
+
+         <!--  {% for col, row_ in zip(column_names, row) %} -->
+          
+          <h3>{{ row_data[1]}} </h3>
+         <!--  {% else %}
+          <h5>{{row_}}</h5> -->
+   <!--   
+        {% endfor %} -->
+
+        </div>
+   <!--      {% endfor %} -->
+
+
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,61 @@
+{% extends "header.html" %}
+{% block content %}
+
+<section class="content">
+
+    <div class="box">
+
+
+      <div class="box-body">
+
+        <table class="table table-bordered table-striped dt-responsive tables" width="100%">
+       
+          <thead>
+           
+           <tr>
+               {% for col in column_names_india %}
+             <!-- <th style="width:10px">#</th> -->
+             <th>{{col}}</th>
+             {% endfor %}
+             <h4 style="font-size: 16px; text-align: center; font-weight: bold;"> Coronavirus cases in India </h4>
+         
+           </tr> 
+
+          </thead>
+<tbody>
+    {% for row in row_data_india %}
+    <tr>
+        {% for col, row_ in zip_india(column_names_india, row) %}
+        {% if col == link_column %}
+        <td >{{ row_ }}</td>
+        {% else %}
+        <td>{{row_}}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+
+    {% endfor %}
+</tbody>
+
+        </table>
+
+      </div>
+    
+    </div>
+
+
+
+
+
+
+  </section>
+
+ 
+
+
+
+
+
+
+{% endblock %}
+
